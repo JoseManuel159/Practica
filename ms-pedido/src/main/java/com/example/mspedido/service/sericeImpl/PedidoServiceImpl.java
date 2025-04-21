@@ -42,9 +42,11 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Optional<Pedido> getPedidoById(Integer id) {
         Pedido pedido = pedidoRepository.findById(id).get();
-        Cliente cliente = clienteFeign.listarcliente(pedido.getCliente().getId()).getBody();
+        Cliente cliente = clienteFeign.listarcliente(pedido.getClienteId()).getBody();
+        pedido.setCliente(cliente);
         List<PedidoDetalle> pedidoDetalles = pedido.getDetalle().stream().map(pedidoDetalle -> {
-            Producto producto = productoFeign.listarProducto(pedidoDetalle.getProducto().getId()).getBody();
+            Producto producto = productoFeign.listarProducto(pedidoDetalle.getProductoId()).getBody();
+            pedidoDetalle.setProducto(producto);
             pedidoDetalle.setProducto(producto);
             return pedidoDetalle;
         }).collect(Collectors.toList());

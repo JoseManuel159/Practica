@@ -12,18 +12,23 @@ public class PedidoDetalle {
     private Double cantidad;
     private Double precio;
 
+    @Column(name = "producto_id")
+    private Long productoId;
+
     @Transient
     private Producto producto;
+
 
     public PedidoDetalle() {
         this.cantidad = (double) 0;
         this.precio = (double) 0;
     }
 
-    public PedidoDetalle(Integer id, Double cantidad, Double precio, Producto producto) {
+    public PedidoDetalle(Integer id, Double cantidad, Double precio, Long productoId, Producto producto) {
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
+        this.productoId = productoId;
         this.producto = producto;
     }
 
@@ -57,5 +62,13 @@ public class PedidoDetalle {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public Long getProductoId() {
+        return productoId;
+    }
+
+    public void setProductoId(Long productoId) {
+        this.productoId = productoId;
     }
 }

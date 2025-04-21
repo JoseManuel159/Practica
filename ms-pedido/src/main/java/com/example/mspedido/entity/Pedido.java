@@ -18,8 +18,12 @@ public class Pedido {
     private String numero;
     private String descripcion;
 
+    @Column(name = "cliente_id")
+    private Long clienteId;
+
     @Transient
     private Cliente cliente;
+
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -29,12 +33,12 @@ public class Pedido {
     public Pedido() {
     }
 
-
-    public Pedido(Integer id, String serie, String numero, String descripcion, Cliente cliente, List<PedidoDetalle> detalle) {
+    public Pedido(Integer id, String serie, String numero, String descripcion, Long clienteId, Cliente cliente, List<PedidoDetalle> detalle) {
         this.id = id;
         this.serie = serie;
         this.numero = numero;
         this.descripcion = descripcion;
+        this.clienteId = clienteId;
         this.cliente = cliente;
         this.detalle = detalle;
     }
@@ -85,5 +89,13 @@ public class Pedido {
 
     public void setDetalle(List<PedidoDetalle> detalle) {
         this.detalle = detalle;
+    }
+
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
     }
 }
