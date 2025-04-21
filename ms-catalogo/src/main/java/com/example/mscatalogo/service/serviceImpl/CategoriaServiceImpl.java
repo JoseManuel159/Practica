@@ -11,10 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoriaServiceImpl implements CategoriaService {
+public class CategoriaServiceImpl implements CategoriaService{
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+    
 
     @Override
     public Categoria save(Categoria categoria) {
