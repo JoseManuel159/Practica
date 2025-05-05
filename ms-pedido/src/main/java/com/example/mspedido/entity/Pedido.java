@@ -2,7 +2,6 @@ package com.example.mspedido.entity;
 
 import com.example.mspedido.dto.Cliente;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
